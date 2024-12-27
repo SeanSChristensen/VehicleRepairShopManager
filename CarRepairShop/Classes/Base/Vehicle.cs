@@ -9,6 +9,7 @@ namespace VehicleRepairShop.Classes.Abstracts
 {
     public class Vehicle : IVehicleInterface
     {
+        public int Id { get; private set; }
         public string VehicleModel { get; private set; }
         public string VehicleMake { get; private set; }
         public string PlateNumber { get; private set; }

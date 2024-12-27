@@ -16,7 +16,7 @@ namespace VehicleRepairShop.Repository
         private string password;
         public DatabaseConnection() 
         {
-            this.instance = IniReader.GetValue("DatabaseSettings","instance");          
+            this.instance = IniReader.GetValue("DatabaseSettings", "instance");          
             this.database = IniReader.GetValue("DatabaseSettings", "database");
             this.username = IniReader.GetValue("DatabaseSettings", "username");
             this.password = IniReader.GetValue("DatabaseSettings", "password");

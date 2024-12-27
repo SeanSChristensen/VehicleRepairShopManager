@@ -12,11 +12,7 @@ namespace CarRepairShop
         private List<Vehicle> _displayedVehicles = new List<Vehicle>();
         public MainForm()
         {
-            var vehicleRepository = new VehicleRepository();
-
-            _vehicles = vehicleRepository.GetVehicles();
-            _displayedVehicles = _vehicles;
-
+            RefreshVehicles();
             InitializeComponent();
             RefreshDataGridView();
             FilterComboBox.Items.Add("Vehicle Make");
@@ -28,6 +24,13 @@ namespace CarRepairShop
             DataGridView.DataSource = null;
             DataGridView.DataSource = _displayedVehicles;
             DataGridView.Columns["TechnicalSpec"].Visible = false;
+        }
+
+        private void RefreshVehicles()
+        {
+            var vehicleRepository = new VehicleRepository();
+            _vehicles = vehicleRepository.GetVehicles();
+            _displayedVehicles = _vehicles;
         }
 
         private void NewVehicleButton_Click(object sender, EventArgs e)
@@ -73,6 +76,8 @@ namespace CarRepairShop
             this.Hide();
             myForm.ShowDialog();
             this.Show();
+            RefreshVehicles();
+            RefreshDataGridView();
         }
     }
 }

@@ -25,7 +25,7 @@ namespace VehicleRepairShop.Repository
         public List<Vehicle> GetVehicles()
         {
             // Define the SQL query
-            string query = $"SELECT vehicle_model AS VehicleModel, vehicle_make AS VehicleMake, plate_number AS PlateNumber, repair_status AS RepairStatus, engine_type AS EngineType, transmission AS Transmission, mileage AS Mileage, colour AS Colour FROM {_tableName}";
+            string query = $"SELECT id AS Id, vehicle_model AS VehicleModel, vehicle_make AS VehicleMake, plate_number AS PlateNumber, repair_status AS RepairStatus, engine_type AS EngineType, transmission AS Transmission, mileage AS Mileage, colour AS Colour FROM {_tableName}";
 
             // Create and open the connection
             using (SqlConnection connection = new SqlConnection(_databaseConnection.GetConnectionString()))
@@ -54,7 +54,7 @@ namespace VehicleRepairShop.Repository
                     Console.WriteLine($"An error occurred: {ex.Message}");
                     return null;
                 }
-                
+                connection.Close();
             }
         }
 
@@ -76,7 +76,28 @@ namespace VehicleRepairShop.Repository
                 {
                     Console.WriteLine($"An error occurred: {ex.Message}");
                 }
+                connection.Close();
+            }
+        }
 
+        public void UpdateVehicleRepairStatus(string id)
+        {
+            // Define the SQL query
+            string query = $"UPDATE Vehicle SET repair_status = 'Finished' WHERE id = {id}";
+
+            // Create and open the connection
+            using (SqlConnection connection = new SqlConnection(_databaseConnection.GetConnectionString()))
+            {
+                try
+                {
+                    connection.Open();
+                    connection.Execute(query);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred: {ex.Message}");
+                }
+                connection.Close();
             }
         }
     }

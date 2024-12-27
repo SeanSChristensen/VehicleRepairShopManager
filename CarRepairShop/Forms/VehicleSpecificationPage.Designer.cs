@@ -38,14 +38,17 @@
             RepairStatusLabel = new Label();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
+            ColourLabel = new Label();
+            MileageLabel = new Label();
+            TransmissionLabel = new Label();
+            EngineTypeLabel = new Label();
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
-            EngineTypeLabel = new Label();
-            TransmissionLabel = new Label();
-            MileageLabel = new Label();
-            ColourLabel = new Label();
+            FinishRepairStatusButton = new Button();
+            label14 = new Label();
+            VehicleIdLabel = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -94,7 +97,7 @@
             // 
             VehicleModelLabel.AutoSize = true;
             VehicleModelLabel.Font = new Font("Segoe UI", 11F);
-            VehicleModelLabel.Location = new Point(123, 29);
+            VehicleModelLabel.Location = new Point(123, 47);
             VehicleModelLabel.Name = "VehicleModelLabel";
             VehicleModelLabel.Size = new Size(103, 20);
             VehicleModelLabel.TabIndex = 4;
@@ -104,7 +107,7 @@
             // 
             VehicleMakeLabel.AutoSize = true;
             VehicleMakeLabel.Font = new Font("Segoe UI", 11F);
-            VehicleMakeLabel.Location = new Point(123, 49);
+            VehicleMakeLabel.Location = new Point(123, 67);
             VehicleMakeLabel.Name = "VehicleMakeLabel";
             VehicleMakeLabel.Size = new Size(96, 20);
             VehicleMakeLabel.TabIndex = 5;
@@ -114,7 +117,7 @@
             // 
             PlateNumberLabel.AutoSize = true;
             PlateNumberLabel.Font = new Font("Segoe UI", 11F);
-            PlateNumberLabel.Location = new Point(123, 69);
+            PlateNumberLabel.Location = new Point(123, 87);
             PlateNumberLabel.Name = "PlateNumberLabel";
             PlateNumberLabel.Size = new Size(100, 20);
             PlateNumberLabel.TabIndex = 6;
@@ -124,7 +127,7 @@
             // 
             RepairStatusLabel.AutoSize = true;
             RepairStatusLabel.Font = new Font("Segoe UI", 11F);
-            RepairStatusLabel.Location = new Point(123, 89);
+            RepairStatusLabel.Location = new Point(123, 107);
             RepairStatusLabel.Name = "RepairStatusLabel";
             RepairStatusLabel.Size = new Size(96, 20);
             RepairStatusLabel.TabIndex = 7;
@@ -136,7 +139,7 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(label4);
-            groupBox1.Location = new Point(12, 12);
+            groupBox1.Location = new Point(12, 30);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(245, 116);
             groupBox1.TabIndex = 8;
@@ -153,12 +156,52 @@
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(label7);
             groupBox2.Controls.Add(label8);
-            groupBox2.Location = new Point(12, 134);
+            groupBox2.Location = new Point(12, 152);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(245, 116);
             groupBox2.TabIndex = 9;
             groupBox2.TabStop = false;
             groupBox2.Text = "Vehicle Specifications:";
+            // 
+            // ColourLabel
+            // 
+            ColourLabel.AutoSize = true;
+            ColourLabel.Font = new Font("Segoe UI", 11F);
+            ColourLabel.Location = new Point(111, 77);
+            ColourLabel.Name = "ColourLabel";
+            ColourLabel.Size = new Size(53, 20);
+            ColourLabel.TabIndex = 7;
+            ColourLabel.Text = "Colour";
+            // 
+            // MileageLabel
+            // 
+            MileageLabel.AutoSize = true;
+            MileageLabel.Font = new Font("Segoe UI", 11F);
+            MileageLabel.Location = new Point(111, 57);
+            MileageLabel.Name = "MileageLabel";
+            MileageLabel.Size = new Size(63, 20);
+            MileageLabel.TabIndex = 6;
+            MileageLabel.Text = "Mileage";
+            // 
+            // TransmissionLabel
+            // 
+            TransmissionLabel.AutoSize = true;
+            TransmissionLabel.Font = new Font("Segoe UI", 11F);
+            TransmissionLabel.Location = new Point(111, 37);
+            TransmissionLabel.Name = "TransmissionLabel";
+            TransmissionLabel.Size = new Size(93, 20);
+            TransmissionLabel.TabIndex = 5;
+            TransmissionLabel.Text = "Transmission";
+            // 
+            // EngineTypeLabel
+            // 
+            EngineTypeLabel.AutoSize = true;
+            EngineTypeLabel.Font = new Font("Segoe UI", 11F);
+            EngineTypeLabel.Location = new Point(111, 17);
+            EngineTypeLabel.Name = "EngineTypeLabel";
+            EngineTypeLabel.Size = new Size(89, 20);
+            EngineTypeLabel.TabIndex = 4;
+            EngineTypeLabel.Text = "Engine Type";
             // 
             // label5
             // 
@@ -200,51 +243,44 @@
             label8.TabIndex = 3;
             label8.Text = "Colour:";
             // 
-            // EngineTypeLabel
+            // FinishRepairStatusButton
             // 
-            EngineTypeLabel.AutoSize = true;
-            EngineTypeLabel.Font = new Font("Segoe UI", 11F);
-            EngineTypeLabel.Location = new Point(111, 17);
-            EngineTypeLabel.Name = "EngineTypeLabel";
-            EngineTypeLabel.Size = new Size(89, 20);
-            EngineTypeLabel.TabIndex = 4;
-            EngineTypeLabel.Text = "Engine Type";
+            FinishRepairStatusButton.Location = new Point(12, 274);
+            FinishRepairStatusButton.Name = "FinishRepairStatusButton";
+            FinishRepairStatusButton.Size = new Size(88, 23);
+            FinishRepairStatusButton.TabIndex = 10;
+            FinishRepairStatusButton.Text = "Finish Repairs";
+            FinishRepairStatusButton.UseVisualStyleBackColor = true;
+            FinishRepairStatusButton.Click += FinishRepairStatusButton_Click;
             // 
-            // TransmissionLabel
+            // label14
             // 
-            TransmissionLabel.AutoSize = true;
-            TransmissionLabel.Font = new Font("Segoe UI", 11F);
-            TransmissionLabel.Location = new Point(111, 37);
-            TransmissionLabel.Name = "TransmissionLabel";
-            TransmissionLabel.Size = new Size(93, 20);
-            TransmissionLabel.TabIndex = 5;
-            TransmissionLabel.Text = "Transmission";
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 12F);
+            label14.Location = new Point(15, 6);
+            label14.Name = "label14";
+            label14.Size = new Size(85, 21);
+            label14.TabIndex = 11;
+            label14.Text = "Vehicle ID: ";
             // 
-            // MileageLabel
+            // VehicleIdLabel
             // 
-            MileageLabel.AutoSize = true;
-            MileageLabel.Font = new Font("Segoe UI", 11F);
-            MileageLabel.Location = new Point(111, 57);
-            MileageLabel.Name = "MileageLabel";
-            MileageLabel.Size = new Size(63, 20);
-            MileageLabel.TabIndex = 6;
-            MileageLabel.Text = "Mileage";
-            // 
-            // ColourLabel
-            // 
-            ColourLabel.AutoSize = true;
-            ColourLabel.Font = new Font("Segoe UI", 11F);
-            ColourLabel.Location = new Point(111, 77);
-            ColourLabel.Name = "ColourLabel";
-            ColourLabel.Size = new Size(53, 20);
-            ColourLabel.TabIndex = 7;
-            ColourLabel.Text = "Colour";
+            VehicleIdLabel.AutoSize = true;
+            VehicleIdLabel.Font = new Font("Segoe UI", 12F);
+            VehicleIdLabel.Location = new Point(91, 6);
+            VehicleIdLabel.Name = "VehicleIdLabel";
+            VehicleIdLabel.Size = new Size(78, 21);
+            VehicleIdLabel.TabIndex = 12;
+            VehicleIdLabel.Text = "Vehicle ID";
             // 
             // VehicleSpecificationPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(VehicleIdLabel);
+            Controls.Add(label14);
+            Controls.Add(FinishRepairStatusButton);
             Controls.Add(groupBox2);
             Controls.Add(RepairStatusLabel);
             Controls.Add(PlateNumberLabel);
@@ -281,5 +317,8 @@
         private Label MileageLabel;
         private Label TransmissionLabel;
         private Label EngineTypeLabel;
+        private Button FinishRepairStatusButton;
+        private Label label14;
+        private Label VehicleIdLabel;
     }
 }
