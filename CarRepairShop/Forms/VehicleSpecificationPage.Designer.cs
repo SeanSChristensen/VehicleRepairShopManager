@@ -239,9 +239,9 @@
             label8.Font = new Font("Segoe UI", 11F);
             label8.Location = new Point(44, 77);
             label8.Name = "label8";
-            label8.Size = new Size(56, 20);
+            label8.Size = new Size(48, 20);
             label8.TabIndex = 3;
-            label8.Text = "Colour:";
+            label8.Text = "Color:";
             // 
             // FinishRepairStatusButton
             // 

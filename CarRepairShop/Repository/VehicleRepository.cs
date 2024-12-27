@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 using Microsoft.Data.SqlClient;
+using NLog;
 using VehicleRepairShop.Classes;
 using VehicleRepairShop.Classes.Abstracts;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
@@ -17,6 +18,9 @@ namespace VehicleRepairShop.Repository
     {
         private DatabaseConnection _databaseConnection;
         private readonly string _tableName = "Vehicle";
+
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
+
         public VehicleRepository() 
         {
             _databaseConnection = new DatabaseConnection();
@@ -33,7 +37,6 @@ namespace VehicleRepairShop.Repository
                 try
                 {
                     connection.Open();
-                    //List<Vehicle> vehicles = (List<Vehicle>)connection.Query<Vehicle>(query);
                     // Query and map the result
                     var vehicles = connection.Query<Vehicle, TechnicalSpec, Vehicle>(
                         query,
@@ -45,8 +48,9 @@ namespace VehicleRepairShop.Repository
                         },
                         splitOn: "EngineType" // Start mapping TechnicalSpec fields here
                     ).ToList();
+                    connection.Close();
 
-
+                    _logger.Info($"SELECT Query to {_tableName}, Count: " + vehicles.Count);
                     return vehicles;
                 }
                 catch (Exception ex)
@@ -54,7 +58,6 @@ namespace VehicleRepairShop.Repository
                     Console.WriteLine($"An error occurred: {ex.Message}");
                     return null;
                 }
-                connection.Close();
             }
         }
 
@@ -77,6 +80,7 @@ namespace VehicleRepairShop.Repository
                     Console.WriteLine($"An error occurred: {ex.Message}");
                 }
                 connection.Close();
+                _logger.Info($"INSERT Query to {_tableName}: " + query);
             }
         }
 
@@ -98,6 +102,7 @@ namespace VehicleRepairShop.Repository
                     Console.WriteLine($"An error occurred: {ex.Message}");
                 }
                 connection.Close();
+                _logger.Info($"UPDATE Query to {_tableName}, ID: " + id);
             }
         }
     }
