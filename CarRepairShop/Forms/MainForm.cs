@@ -1,10 +1,7 @@
-using System.Windows.Forms;
-using VehicleRepairShop.Classes;
 using VehicleRepairShop.Classes.Abstracts;
 using VehicleRepairShop.Forms;
 using VehicleRepairShop.Logic;
 using VehicleRepairShop.Repository;
-using static System.Windows.Forms.DataFormats;
 
 namespace CarRepairShop
 {
@@ -33,23 +30,18 @@ namespace CarRepairShop
             DataGridView.Columns["TechnicalSpec"].Visible = false;
         }
 
-        private void button1_Click_1(object sender, System.EventArgs e)
+        private void NewVehicleButton_Click(object sender, EventArgs e)
         {
-            foreach (var vehicle in _displayedVehicles)
-            {
-                vehicle.UpdateRepairStatus(true);
-            }
-            RefreshDataGridView();
-        }
+            var vehicleRepository = new VehicleRepository();
 
-        private void NewVehicleButton_Click(object sender, System.EventArgs e)
-        {
             using (NewVehiclePage promptForm = new NewVehiclePage())
             {
                 if (promptForm.ShowDialog() == DialogResult.OK)
                 {
-                    _vehicles.Add(promptForm.createdVehicle);
+                    _vehicles = vehicleRepository.GetVehicles();
+                    _displayedVehicles = _vehicles;
                     RefreshDataGridView();
+
                 }
             }
         }

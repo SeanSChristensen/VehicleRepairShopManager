@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             DataGridView = new DataGridView();
-            button1 = new Button();
             NewVehicleButton = new Button();
             FilterLabel = new Label();
             FilterComboBox = new ComboBox();
@@ -51,19 +50,9 @@
             DataGridView.TabIndex = 0;
             DataGridView.SelectionChanged += DataGridView_SelectionChanged;
             // 
-            // button1
-            // 
-            button1.Location = new Point(12, 316);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 1;
-            button1.Text = "Finish All";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click_1;
-            // 
             // NewVehicleButton
             // 
-            NewVehicleButton.Location = new Point(93, 316);
+            NewVehicleButton.Location = new Point(12, 316);
             NewVehicleButton.Name = "NewVehicleButton";
             NewVehicleButton.Size = new Size(178, 23);
             NewVehicleButton.TabIndex = 2;
@@ -118,7 +107,6 @@
             Controls.Add(FilterComboBox);
             Controls.Add(FilterLabel);
             Controls.Add(NewVehicleButton);
-            Controls.Add(button1);
             Controls.Add(DataGridView);
             Name = "MainForm";
             Text = "Repair List";
@@ -130,7 +118,6 @@
         #endregion
 
         private DataGridView DataGridView;
-        private Button button1;
         private Button NewVehicleButton;
         private Label FilterLabel;
         private ComboBox FilterComboBox;

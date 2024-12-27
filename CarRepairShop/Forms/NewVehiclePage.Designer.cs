@@ -41,8 +41,8 @@
             TruckSpecificationLabel = new Label();
             label1 = new Label();
             AddButton = new Button();
-            groupBox1 = new GroupBox();
-            groupBox2 = new GroupBox();
+            VehicleInformationGroupBox = new GroupBox();
+            TechnicalSpecificationsGroupBox = new GroupBox();
             ColourLabel = new Label();
             ColourTextBox = new TextBox();
             MileageLabel = new Label();
@@ -51,8 +51,8 @@
             TransmissionTextBox = new TextBox();
             EngineTypeLabel = new Label();
             EngineTypeTextBox = new TextBox();
-            groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
+            VehicleInformationGroupBox.SuspendLayout();
+            TechnicalSpecificationsGroupBox.SuspendLayout();
             SuspendLayout();
             // 
             // comboBox1
@@ -174,41 +174,41 @@
             AddButton.UseVisualStyleBackColor = true;
             AddButton.Click += AddButton_Click;
             // 
-            // groupBox1
+            // VehicleInformationGroupBox
             // 
-            groupBox1.Controls.Add(ModelNameLabel);
-            groupBox1.Controls.Add(ModelNameTextBox);
-            groupBox1.Controls.Add(TruckSpecificationTextBox);
-            groupBox1.Controls.Add(ManufacturerLabel);
-            groupBox1.Controls.Add(TruckSpecificationLabel);
-            groupBox1.Controls.Add(ManufacturerTextBox);
-            groupBox1.Controls.Add(SeatingCapacityTextBox);
-            groupBox1.Controls.Add(PlateNumberLabel);
-            groupBox1.Controls.Add(SeatingCapacityLabel);
-            groupBox1.Controls.Add(PlateNumberTextBox);
-            groupBox1.Location = new Point(12, 45);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(319, 142);
-            groupBox1.TabIndex = 13;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Vehicle Information";
+            VehicleInformationGroupBox.Controls.Add(ModelNameLabel);
+            VehicleInformationGroupBox.Controls.Add(ModelNameTextBox);
+            VehicleInformationGroupBox.Controls.Add(TruckSpecificationTextBox);
+            VehicleInformationGroupBox.Controls.Add(ManufacturerLabel);
+            VehicleInformationGroupBox.Controls.Add(TruckSpecificationLabel);
+            VehicleInformationGroupBox.Controls.Add(ManufacturerTextBox);
+            VehicleInformationGroupBox.Controls.Add(SeatingCapacityTextBox);
+            VehicleInformationGroupBox.Controls.Add(PlateNumberLabel);
+            VehicleInformationGroupBox.Controls.Add(SeatingCapacityLabel);
+            VehicleInformationGroupBox.Controls.Add(PlateNumberTextBox);
+            VehicleInformationGroupBox.Location = new Point(12, 45);
+            VehicleInformationGroupBox.Name = "VehicleInformationGroupBox";
+            VehicleInformationGroupBox.Size = new Size(319, 142);
+            VehicleInformationGroupBox.TabIndex = 13;
+            VehicleInformationGroupBox.TabStop = false;
+            VehicleInformationGroupBox.Text = "Vehicle Information";
             // 
-            // groupBox2
+            // TechnicalSpecificationsGroupBox
             // 
-            groupBox2.Controls.Add(ColourLabel);
-            groupBox2.Controls.Add(ColourTextBox);
-            groupBox2.Controls.Add(MileageLabel);
-            groupBox2.Controls.Add(MileageTextBox);
-            groupBox2.Controls.Add(TransmissionLabel);
-            groupBox2.Controls.Add(TransmissionTextBox);
-            groupBox2.Controls.Add(EngineTypeLabel);
-            groupBox2.Controls.Add(EngineTypeTextBox);
-            groupBox2.Location = new Point(12, 193);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(319, 166);
-            groupBox2.TabIndex = 14;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Technical Specifications";
+            TechnicalSpecificationsGroupBox.Controls.Add(ColourLabel);
+            TechnicalSpecificationsGroupBox.Controls.Add(ColourTextBox);
+            TechnicalSpecificationsGroupBox.Controls.Add(MileageLabel);
+            TechnicalSpecificationsGroupBox.Controls.Add(MileageTextBox);
+            TechnicalSpecificationsGroupBox.Controls.Add(TransmissionLabel);
+            TechnicalSpecificationsGroupBox.Controls.Add(TransmissionTextBox);
+            TechnicalSpecificationsGroupBox.Controls.Add(EngineTypeLabel);
+            TechnicalSpecificationsGroupBox.Controls.Add(EngineTypeTextBox);
+            TechnicalSpecificationsGroupBox.Location = new Point(12, 193);
+            TechnicalSpecificationsGroupBox.Name = "TechnicalSpecificationsGroupBox";
+            TechnicalSpecificationsGroupBox.Size = new Size(319, 166);
+            TechnicalSpecificationsGroupBox.TabIndex = 14;
+            TechnicalSpecificationsGroupBox.TabStop = false;
+            TechnicalSpecificationsGroupBox.Text = "Technical Specifications";
             // 
             // ColourLabel
             // 
@@ -283,17 +283,17 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(343, 402);
-            Controls.Add(groupBox2);
+            Controls.Add(TechnicalSpecificationsGroupBox);
             Controls.Add(AddButton);
             Controls.Add(label1);
             Controls.Add(comboBox1);
-            Controls.Add(groupBox1);
+            Controls.Add(VehicleInformationGroupBox);
             Name = "NewVehiclePage";
             Text = "New Vehicle";
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
+            VehicleInformationGroupBox.ResumeLayout(false);
+            VehicleInformationGroupBox.PerformLayout();
+            TechnicalSpecificationsGroupBox.ResumeLayout(false);
+            TechnicalSpecificationsGroupBox.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -313,8 +313,8 @@
         private Label TruckSpecificationLabel;
         private Label label1;
         private Button AddButton;
-        private GroupBox groupBox1;
-        private GroupBox groupBox2;
+        private GroupBox VehicleInformationGroupBox;
+        private GroupBox TechnicalSpecificationsGroupBox;
         private Label EngineTypeLabel;
         private TextBox EngineTypeTextBox;
         private Label MileageLabel;

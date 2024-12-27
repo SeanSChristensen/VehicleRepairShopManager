@@ -57,5 +57,27 @@ namespace VehicleRepairShop.Repository
                 
             }
         }
+
+        public void InsertVehicle(Vehicle vehicle)
+        {
+            // Define the SQL query
+            string query = $"INSERT INTO {_tableName} (vehicle_model, vehicle_make, plate_number, repair_status, engine_type, transmission, mileage, colour) VALUES " +
+                $"('{vehicle.VehicleModel}', '{vehicle.VehicleMake}', '{vehicle.PlateNumber}', '{vehicle.RepairStatus}', '{vehicle.TechnicalSpec.EngineType}', '{vehicle.TechnicalSpec.Transmission}', '{vehicle.TechnicalSpec.Mileage}', '{vehicle.TechnicalSpec.Colour}');";
+
+            // Create and open the connection
+            using (SqlConnection connection = new SqlConnection(_databaseConnection.GetConnectionString()))
+            {
+                try
+                {
+                    connection.Open();
+                    connection.Execute(query);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred: {ex.Message}");
+                }
+
+            }
+        }
     }
 }

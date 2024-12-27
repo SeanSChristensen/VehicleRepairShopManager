@@ -1,21 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Microsoft.IdentityModel.Tokens;
 using VehicleRepairShop.Classes;
 using VehicleRepairShop.Classes.Abstracts;
+using VehicleRepairShop.Repository;
 
 namespace VehicleRepairShop.Forms
 {
     public partial class NewVehiclePage : Form
     {
-        public Vehicle createdVehicle;
-
         private static List<Control> _carFormElements = new List<Control>();
         private List<Control> _truckFormElements = new List<Control>();
         public NewVehiclePage()
@@ -51,14 +42,42 @@ namespace VehicleRepairShop.Forms
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            if(comboBox1.SelectedItem == "Car")
+            var vehicleRepository = new VehicleRepository();
+
+            List<TextBox> requiredInputFields = TechnicalSpecificationsGroupBox.Controls.OfType<TextBox>()
+                .Concat(VehicleInformationGroupBox.Controls.OfType<TextBox>())
+                .ToList();
+
+            if (comboBox1.SelectedItem == null)
             {
-                createdVehicle = new Car(Int32.Parse(SeatingCapacityTextBox.Text), ModelNameTextBox.Text, ManufacturerTextBox.Text, PlateNumberTextBox.Text, new TechnicalSpec("","",0,""));
+                MessageBox.Show("Please select vehicle type");
+                return;
             }
+
+
+            if (comboBox1.SelectedItem == "Car") 
+            {
+                requiredInputFields.Remove(TruckSpecificationTextBox);
+            }
+
             if (comboBox1.SelectedItem == "Truck")
             {
-                createdVehicle = new Truck(TruckSpecificationTextBox.Text, ModelNameTextBox.Text, ManufacturerTextBox.Text, PlateNumberTextBox.Text, new TechnicalSpec(EngineTypeTextBox.Text, TransmissionTextBox.Text, Int32.Parse(MileageTextBox.Text) , ColourTextBox.Text));
+                requiredInputFields.Remove(SeatingCapacityTextBox);
             }
+
+
+            foreach (var textBox in requiredInputFields)
+            {
+                if (textBox.Text.IsNullOrEmpty() )
+                {
+                    MessageBox.Show("Please complete form");
+                    return;
+                }
+            }
+
+            vehicleRepository.InsertVehicle(new Vehicle(ModelNameTextBox.Text, ManufacturerTextBox.Text, PlateNumberTextBox.Text, new TechnicalSpec(EngineTypeTextBox.Text, TransmissionTextBox.Text, Int32.Parse(MileageTextBox.Text), ColourTextBox.Text)));
+
+
             DialogResult = DialogResult.OK;
             Close();
         }
