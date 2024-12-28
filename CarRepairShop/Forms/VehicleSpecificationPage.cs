@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using VehicleRepairShop.Classes.Abstracts;
 using VehicleRepairShop.Repository;
+using VehicleRepairShop.Repository.Interfaces;
 
 namespace VehicleRepairShop.Forms
 {
@@ -42,14 +43,12 @@ namespace VehicleRepairShop.Forms
             {
                 RepairStatusLabel.ForeColor = Color.Green;
             }
-
-
         }
 
         private void FinishRepairStatusButton_Click(object sender, EventArgs e)
         {
-            var vehicleRepository = new VehicleRepository();
-            vehicleRepository.UpdateVehicleRepairStatus(_vehicle.Id.ToString());
+            IRepository<Vehicle> vehicleRepository = new VehicleRepository();
+            vehicleRepository.Update(_vehicle.Id.ToString(), "repair_status", "Finished");
             RepairStatusLabel.Text = "Finished";
             RepairStatusLabel.ForeColor = Color.Green;
         }

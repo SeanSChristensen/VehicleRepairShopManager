@@ -2,6 +2,7 @@ using VehicleRepairShop.Classes.Abstracts;
 using VehicleRepairShop.Forms;
 using VehicleRepairShop.Logic;
 using VehicleRepairShop.Repository;
+using VehicleRepairShop.Repository.Interfaces;
 
 namespace CarRepairShop
 {
@@ -28,20 +29,20 @@ namespace CarRepairShop
 
         private void RefreshVehicles()
         {
-            var vehicleRepository = new VehicleRepository();
-            _vehicles = vehicleRepository.GetVehicles();
+            IRepository<Vehicle> vehicleRepository = new VehicleRepository();
+            _vehicles = (List<Vehicle>)vehicleRepository.GetAll();
             _displayedVehicles = _vehicles;
         }
 
         private void NewVehicleButton_Click(object sender, EventArgs e)
         {
-            var vehicleRepository = new VehicleRepository();
+            IRepository<Vehicle> vehicleRepository = new VehicleRepository();
 
             using (NewVehiclePage promptForm = new NewVehiclePage())
             {
                 if (promptForm.ShowDialog() == DialogResult.OK)
                 {
-                    _vehicles = vehicleRepository.GetVehicles();
+                    _vehicles = (List<Vehicle>)vehicleRepository.GetAll();
                     _displayedVehicles = _vehicles;
                     RefreshDataGridView();
 

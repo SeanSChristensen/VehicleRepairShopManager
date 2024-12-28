@@ -10,11 +10,12 @@ using Microsoft.Data.SqlClient;
 using NLog;
 using VehicleRepairShop.Classes;
 using VehicleRepairShop.Classes.Abstracts;
+using VehicleRepairShop.Repository.Interfaces;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace VehicleRepairShop.Repository
 {
-    public class VehicleRepository
+    public class VehicleRepository: IRepository<Vehicle>
     {
         private DatabaseConnection _databaseConnection;
         private readonly string _tableName = "Vehicle";
@@ -26,7 +27,7 @@ namespace VehicleRepairShop.Repository
             _databaseConnection = new DatabaseConnection();
         }
 
-        public List<Vehicle> GetVehicles()
+        public IEnumerable<Vehicle> GetAll()
         {
             // Define the SQL query
             string query = $"SELECT id AS Id, vehicle_model AS VehicleModel, vehicle_make AS VehicleMake, plate_number AS PlateNumber, repair_status AS RepairStatus, engine_type AS EngineType, transmission AS Transmission, mileage AS Mileage, colour AS Colour FROM {_tableName}";
@@ -61,7 +62,7 @@ namespace VehicleRepairShop.Repository
             }
         }
 
-        public void InsertVehicle(Vehicle vehicle)
+        public void Add(Vehicle vehicle)
         {
             // Define the SQL query
             string query = $"INSERT INTO {_tableName} (vehicle_model, vehicle_make, plate_number, repair_status, engine_type, transmission, mileage, colour) VALUES " +
@@ -84,10 +85,10 @@ namespace VehicleRepairShop.Repository
             }
         }
 
-        public void UpdateVehicleRepairStatus(string id)
+        public void Update(string id, string column, string value)
         {
             // Define the SQL query
-            string query = $"UPDATE Vehicle SET repair_status = 'Finished' WHERE id = {id}";
+            string query = $"UPDATE Vehicle SET {column} = '{value}' WHERE id = {id}";
 
             // Create and open the connection
             using (SqlConnection connection = new SqlConnection(_databaseConnection.GetConnectionString()))
@@ -102,7 +103,7 @@ namespace VehicleRepairShop.Repository
                     Console.WriteLine($"An error occurred: {ex.Message}");
                 }
                 connection.Close();
-                _logger.Info($"UPDATE Query to {_tableName}, ID: " + id);
+                _logger.Info($"UPDATE Query to {_tableName}, {column} updated to {value} where ID is " + id);
             }
         }
     }

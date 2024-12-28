@@ -2,6 +2,7 @@
 using VehicleRepairShop.Classes;
 using VehicleRepairShop.Classes.Abstracts;
 using VehicleRepairShop.Repository;
+using VehicleRepairShop.Repository.Interfaces;
 
 namespace VehicleRepairShop.Forms
 {
@@ -42,7 +43,7 @@ namespace VehicleRepairShop.Forms
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            var vehicleRepository = new VehicleRepository();
+            IRepository<Vehicle> vehicleRepository = new VehicleRepository();
 
             List<TextBox> requiredInputFields = TechnicalSpecificationsGroupBox.Controls.OfType<TextBox>()
                 .Concat(VehicleInformationGroupBox.Controls.OfType<TextBox>())
@@ -75,7 +76,7 @@ namespace VehicleRepairShop.Forms
                 }
             }
 
-            vehicleRepository.InsertVehicle(new Vehicle(ModelNameTextBox.Text, ManufacturerTextBox.Text, PlateNumberTextBox.Text, new TechnicalSpec(EngineTypeTextBox.Text, TransmissionTextBox.Text, Int32.Parse(MileageTextBox.Text), ColourTextBox.Text)));
+            vehicleRepository.Add(new Vehicle(ModelNameTextBox.Text, ManufacturerTextBox.Text, PlateNumberTextBox.Text, new TechnicalSpec(EngineTypeTextBox.Text, TransmissionTextBox.Text, Int32.Parse(MileageTextBox.Text), ColourTextBox.Text)));
 
 
             DialogResult = DialogResult.OK;
