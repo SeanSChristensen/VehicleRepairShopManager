@@ -34,6 +34,7 @@
             FilterComboBox = new ComboBox();
             FilterTextBox = new TextBox();
             InspectButton = new Button();
+            JsonImportButton = new Button();
             ((System.ComponentModel.ISupportInitialize)DataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -97,11 +98,22 @@
             InspectButton.UseVisualStyleBackColor = true;
             InspectButton.Click += InspectButton_Click;
             // 
+            // JsonImportButton
+            // 
+            JsonImportButton.Location = new Point(196, 316);
+            JsonImportButton.Name = "JsonImportButton";
+            JsonImportButton.Size = new Size(119, 23);
+            JsonImportButton.TabIndex = 7;
+            JsonImportButton.Text = "Import From JSON";
+            JsonImportButton.UseVisualStyleBackColor = true;
+            JsonImportButton.Click += JsonImportButton_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(JsonImportButton);
             Controls.Add(InspectButton);
             Controls.Add(FilterTextBox);
             Controls.Add(FilterComboBox);
@@ -123,5 +135,6 @@
         private ComboBox FilterComboBox;
         private TextBox FilterTextBox;
         private Button InspectButton;
+        private Button JsonImportButton;
     }
 }

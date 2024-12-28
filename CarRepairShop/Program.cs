@@ -1,4 +1,5 @@
 using NLog;
+using VehicleRepairShop.Logic;
 using VehicleRepairShop.Repository;
 
 namespace CarRepairShop

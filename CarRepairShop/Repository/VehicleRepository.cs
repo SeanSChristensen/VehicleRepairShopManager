@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dapper;
+﻿using Dapper;
 using Microsoft.Data.SqlClient;
 using NLog;
 using VehicleRepairShop.Classes;
 using VehicleRepairShop.Classes.Abstracts;
 using VehicleRepairShop.Repository.Interfaces;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace VehicleRepairShop.Repository
 {

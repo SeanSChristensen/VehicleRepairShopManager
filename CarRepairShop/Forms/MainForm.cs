@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+using VehicleRepairShop.Classes;
 using VehicleRepairShop.Classes.Abstracts;
 using VehicleRepairShop.Forms;
 using VehicleRepairShop.Logic;
@@ -79,6 +81,15 @@ namespace CarRepairShop
             this.Show();
             RefreshVehicles();
             RefreshDataGridView();
+        }
+
+        private void JsonImportButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog JsonImportFileDialogue = new OpenFileDialog();
+            JsonImportFileDialogue.InitialDirectory = Application.StartupPath + "\\Sample";
+            JsonImportFileDialogue.ShowDialog();
+
+            Car car = JsonDeserialization.ImportCarFromJson(JsonImportFileDialogue.FileName);
         }
     }
 }

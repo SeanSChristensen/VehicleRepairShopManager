@@ -1,0 +1,14 @@
+{
+  "Id": 0,
+  "VehicleModel": "Corolla",
+  "VehicleMake": "Toyota",
+  "PlateNumber": "ABC123",
+  "RepairStatus": "Not Finished",
+  "SeatingCapacity": 4,
+  "TechnicalSpec": {
+    "EngineType": "Electric",
+    "Transmission": "Automatic",
+    "Mileage": 670,
+    "Colour": "White"
+  }
+}
