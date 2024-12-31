@@ -11,5 +11,8 @@ namespace VehicleRepairShop.Repository.Interfaces
         IEnumerable<T> GetAll();
         void Add(T entity);
         void Update(string id, string column, string value);
+
+        bool TableExists();
+        void CreateTable();
     }
 }
