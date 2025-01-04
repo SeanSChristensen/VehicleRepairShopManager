@@ -64,10 +64,6 @@ namespace VehicleRepairShop.Repository
             // Create and open the connection
             using (SqlConnection connection = new SqlConnection(_databaseConnection.GetConnectionString()))
             {
-                // Define the SQL query
-                string query = $"INSERT INTO {_tableName} (vehicle_model, vehicle_make, plate_number, repair_status, engine_type, transmission, mileage, colour) VALUES " +
-                    $"('{vehicle.VehicleModel}', '{vehicle.VehicleMake}', '{vehicle.PlateNumber}', '{vehicle.RepairStatus}', '{vehicle.TechnicalSpec.EngineType}', '{vehicle.TechnicalSpec.Transmission}', '{vehicle.TechnicalSpec.Mileage}', '{vehicle.TechnicalSpec.Colour}');";
-
                 SqlCommand sqlCommand = new SqlCommand($@"INSERT INTO {_tableName} (vehicle_model, vehicle_make, plate_number, repair_status, engine_type, transmission, mileage, colour) VALUES (@vehicle_model, @vehicle_make, @plate_number, @repair_status, @engine_type, @transmission, @mileage, @colour);",
                     connection);
                 sqlCommand.Parameters.Add("@vehicle_model", SqlDbType.VarChar).Value = vehicle.VehicleModel;
@@ -89,7 +85,7 @@ namespace VehicleRepairShop.Repository
                     Console.WriteLine($"An error occurred: {ex.Message}");
                 }
                 connection.Close();
-                _logger.Info($"INSERT Query to {_tableName}: " + query);
+                _logger.Info($"INSERT Query to {_tableName}: " + sqlCommand.ToString());
             }
         }
 

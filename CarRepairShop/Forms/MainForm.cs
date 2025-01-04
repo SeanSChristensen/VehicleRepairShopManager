@@ -8,12 +8,12 @@ using VehicleRepairShop.Repository.Interfaces;
 
 namespace CarRepairShop
 {
-    public partial class MainForm : Form
+    public partial class SaveAsCsvButton : Form
     {
         private List<Vehicle> _vehicles;
 
         private List<Vehicle> _displayedVehicles = new List<Vehicle>();
-        public MainForm()
+        public SaveAsCsvButton()
         {
             RefreshVehicles();
             InitializeComponent();
@@ -86,10 +86,29 @@ namespace CarRepairShop
         private void JsonImportButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog JsonImportFileDialogue = new OpenFileDialog();
-            JsonImportFileDialogue.InitialDirectory = Application.StartupPath + "\\Sample";
+            JsonImportFileDialogue.InitialDirectory = Application.StartupPath + "Sample\\";
             JsonImportFileDialogue.ShowDialog();
 
             Car car = JsonDeserialization.ImportCarFromJson(JsonImportFileDialogue.FileName);
+            IRepository<Vehicle> vehicleRepository = new VehicleRepository();
+
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to import this car into the database", "Car from Json", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                vehicleRepository.Add(car);
+            }
+            RefreshVehicles();
+            RefreshDataGridView();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+                Vehicle.SaveAsCsv(_vehicles, fbd.SelectedPath);
+            }
+
         }
     }
 }
